@@ -64,3 +64,58 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+## ------------------------------------------- Detalhes de desenvolvimento -------------------------------------
+
+Para desenvolver este teste realizei diversas tarefas.
+
+1. Meu pc já estava configurado para inicialização de um projeto em Laravel 10 com PHP 8.2 então realizei simples comandos
+de criação de projeto como "composer create-project laravel/laravel technical-test-laravel-10";
+
+2. Em seguida criei o projeto no Github com a url https://github.com/andersondesigner3d/technical-test-laravel-10.git
+
+3. Pelo github Desktop clonei o projeto pra meu pc. Esta pasta vem vazia pois o projeto no github tem somente arquivos básicos de configuração.
+
+4. Copiei os arquivos do projeto criado em meu pc para a pasta clone do git hub e pelo github desktop criei a branch 
+1-iniciando-projeto-laravel-10-bootstrap dei o primeiro commit e o push pra enviar para o remoto.
+
+5. Git configurado passei pra instalação do bootstrap com os comandos 
+    composer require laravel/ui --dev
+    php artisan ui bootstrap --auth	
+    npm install bootstrap-icons --save-dev        
+
+Alterei a resources\sass\app.scss adicionando @import 'bootstrap-icons/font/bootstrap-icons.css';
+
+6. Pra finalizar o setup
+    npm install
+
+7. Perceba que eu poderia simplesmente adicionar o bootstrap via CDN mas preferi instalar pra mostrar que sei também desta forma, usando layouts e as potencialidades que o bootstrap instalado permite usar apesar de não usufruir do login e do
+register porque não foi solicitado isso no teste. 
+
+8. Pra rodar o projeto uso os comandos de servidor e compilação de css e scripts
+    npm run dev
+    php artisan serve
+
+Perceba que o github não permite salvar o .env do laravel então mandei via whatzapp e por email pra entrevistadora (Amanda).
+
+9. Criei o controller UsersController pra receber a rota "/" com o método usersList();
+
+10. Criei uma camada a mais no MVC do Laravel que chamei de UsersService que serve pra conectar com a API deixando o projeto
+mais organizado.
+
+11. Percebi que o retorno da API não vem paginado o que atrasou bastante o desenvolvimento deste teste já que o ideal é que
+a API traga listas já paginadas pelo Eloquent do Laravel e assim no front fica muito mais dinâmico mostrar a paginação.
+Como a API não veio paginada eu tive que criar um algorítimo de paginação manual capturando parâmetros GET na url e dividindo o array de resposta em pedaços. Perceba que o PDF não determinou a forma como deveria ser capturados estes parâmetros então escolhi desta forma mas poderia ser via url no .web tipo 
+
+    Route::get('/{page}', [App\Http\Controllers\UsersController::class, 'usersList'])->name('usersList');
+
+Como o PDF não especificou fiz pelo Request mas em produção perguntaria ao programador sênior o padrão que ele usa pra isto.
+
+12. Como o PDF também não determinou o nome das blades usei a primeira Welcome que vem por padrão porém bebendo do layout da 
+app.blade.php
+
+13. O PDF diz pra somente deixar uma tabela dentro de um card paginando os usuários com botões de exclusão e edição mas eu decidi por liberdade adicionar javascript pra controlar modais de edição de exclusão e uma máscara pra o input de idade. Deixei os formulários preparados mas parei ai porque o PDF não pedia mais do que isso.
+
+14. Minhas considerações finais é que o arquivo de Sprint semanal ou de simples lista de funções a serem executadas como este PDF quanto mais detalhado for melhor mas sei que numa eventual contratação a empresa deverá ter um programador sênior que repassa todos os padrões de projeto e boas práticas executadas na mesma facilitando o trabalho do júnior. 
+
+

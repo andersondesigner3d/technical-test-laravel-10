@@ -15,13 +15,10 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-// Route::get('/', function () {
-    
-//     return view('welcome');
-// });
-
+//technical test main route
 Route::get('/', [App\Http\Controllers\UsersController::class, 'usersList'])->name('usersList');
 
+//bootsrap routes
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

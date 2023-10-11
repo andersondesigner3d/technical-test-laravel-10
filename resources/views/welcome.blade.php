@@ -3,62 +3,78 @@
 @section('content')
 
 <div class="container">
-  <h1>Technical Test - Laravel 10:</h1>
-  <div class="card">
-    <div class="card-header">
-      Users List
-    </div>
-    <div class="card-body">
-      <table class="table table-hover">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Age</th>
-            <th>Email</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach($paginatedItems as $user)
-          <tr>
-            <td>{{$user['id']}}</td>
-            <td>{{$user['name']}}</td>
-            <td>{{$user['age']}}</td>
-            <td>{{$user['email']}}</td>
-            <td>
-              <div class="btn-group" role="group" aria-label="Basic example">
-                <button data-id="{{$user['id']}}" data-name="{{$user['name']}}" data-age="{{$user['age']}}" data-email="{{$user['email']}}" type="button" id="editButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick='editModal(this)'>Edit</button>
-                <button data-id="{{$user['id']}}" data-name="{{$user['name']}}" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick='deleteModal(this)'>Delete</button>
-              </div>
-            </td>
-          </tr>
-          @endforeach
-        </tbody>
-        
-      </table>
+  <div class="row">
+    <div class="col-md-12">
+      <h1>Technical Test - Laravel 10:</h1>
     </div>
   </div>
-  <hr>
-  <nav>
-    <ul class='pagination justify-content-center'>
-      <li class='page-item'><a class='page-link' href='?page=1'>&laquo;</a></li>
-      @php      
-          for ($pag_ant = $currentPage - $max_links; $pag_ant <= $currentPage - 1; $pag_ant++) { 
-              if ($pag_ant >=1) {
-                  echo "<li class='page-item'><a class='page-link' href='?page=$pag_ant'>$pag_ant</a></li>";
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          Users List
+        </div>
+        <div class="card-body">
+
+          <div class="table-responsive">
+            <table class="table table-hover">
+              <thead>
+                <tr>
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Age</th>
+                  <th>Email</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($paginatedItems as $user)
+                <tr>
+                  <td>{{$user['id']}}</td>
+                  <td>{{$user['name']}}</td>
+                  <td>{{$user['age']}}</td>
+                  <td>{{$user['email']}}</td>
+                  <td style="text-align: right">
+                    <div class="btn-group" role="group" aria-label="Basic example">
+                      <button data-id="{{$user['id']}}" data-name="{{$user['name']}}" data-age="{{$user['age']}}" data-email="{{$user['email']}}" type="button" id="editButton" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal" onclick='editModal(this)'>Edit</button>
+                      <button data-id="{{$user['id']}}" data-name="{{$user['name']}}" type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteModal" onclick='deleteModal(this)'>Delete</button>
+                    </div>
+                  </td>
+                </tr>
+                @endforeach
+              </tbody>
+              
+            </table>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <div class="row">
+    <div class="col-md-12">
+      <nav>
+        <ul class='pagination justify-content-center'>
+          <li class='page-item'><a class='page-link' href='?page=1'>&laquo;</a></li>
+          @php      
+              for ($pag_ant = $currentPage - $max_links; $pag_ant <= $currentPage - 1; $pag_ant++) { 
+                  if ($pag_ant >=1) {
+                      echo "<li class='page-item'><a class='page-link' href='?page=$pag_ant'>$pag_ant</a></li>";
+                  }
               }
-          }
-          echo "<li class='page-item active'><a class='page-link' href='?page=$currentPage'>$currentPage</a></li>";
-          for ($pag_dep = $currentPage + 1; $pag_dep <= $currentPage + $max_links; $pag_dep++) { 
-              if ($pag_dep <= $numPages) {
-                  echo "<li class='page-item'><a class='page-link' href='?page=$pag_dep'>$pag_dep</a></li>";
+              echo "<li class='page-item active'><a class='page-link' href='?page=$currentPage'>$currentPage</a></li>";
+              for ($pag_dep = $currentPage + 1; $pag_dep <= $currentPage + $max_links; $pag_dep++) { 
+                  if ($pag_dep <= $numPages) {
+                      echo "<li class='page-item'><a class='page-link' href='?page=$pag_dep'>$pag_dep</a></li>";
+                  }
               }
-          }
-      @endphp
-      <li class='page-item'><a class='page-link' href='?page={{$numPages}}'>&raquo;</a></li>
-    </ul>
-  </nav>
+          @endphp
+          <li class='page-item'><a class='page-link' href='?page={{$numPages}}'>&raquo;</a></li>
+        </ul>
+      </nav>
+    </div>
+  </div>  
 
   <!-- Edit Modal -->
   <div class="modal" tabindex="-1" id="editModal">
