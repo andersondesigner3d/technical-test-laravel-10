@@ -14,6 +14,8 @@ class UsersService{
             if ($response->successful()) {
                 $data = json_decode($response, true);
                 return $data;                
+            } else {
+                return [];
             }
 
         } catch (\Exception $e) {

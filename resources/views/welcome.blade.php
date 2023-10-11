@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="container">
+  @if(!empty($paginatedItems))
   <div class="row">
     <div class="col-md-12">
       <h1>Technical Test - Laravel 10:</h1>
@@ -15,7 +16,6 @@
           Users List
         </div>
         <div class="card-body">
-
           <div class="table-responsive">
             <table class="table table-hover">
               <thead>
@@ -46,7 +46,6 @@
               
             </table>
           </div>
-
         </div>
       </div>
     </div>
@@ -128,7 +127,13 @@
     </div>
   </div>
   <!-- End Delete Modal -->
-
+@else 
+<div class="row">
+  <div class="col-md-12">
+    <p>API error. Nothing to list.</p>
+  </div>
+</div>
+@endif
 </div>
 
 <script>

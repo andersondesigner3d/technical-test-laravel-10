@@ -19,6 +19,13 @@ class UsersController extends Controller
         try {
             //Capture data from API 
             $data = $this->usersService->listPaginateUsers();
+            if(empty($data)){
+                $paginatedItems="";
+                $currentPage="";
+                $max_links="";
+                $numPages="";
+                return view('welcome',compact('paginatedItems','currentPage','max_links','numPages'));
+            }
             //Extracts the non-paged data of interest
             $dataCollection = collect($data['users']);
             //Pagination
@@ -39,10 +46,10 @@ class UsersController extends Controller
             //prevents forced paging above the existing number of data
             if($currentPage>$numPages){
                 return redirect('/');
-            }        
+            }
             return view('welcome',compact('paginatedItems','currentPage','max_links','numPages'));
         } catch (\Exception $e) {
-            throw $e->getMessage();
+            throw $e;
         }        
     }
 }

@@ -65,7 +65,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 
-## ------------------------------------------- Detalhes de desenvolvimento -------------------------------------
+## ----- Detalhes de desenvolvimento -----
 
 Para desenvolver este teste realizei diversas tarefas.
 
@@ -101,7 +101,7 @@ Perceba que o github não permite salvar o .env do laravel então mandei via wha
 9. Criei o controller UsersController pra receber a rota "/" com o método usersList();
 
 10. Criei uma camada a mais no MVC do Laravel que chamei de UsersService que serve pra conectar com a API deixando o projeto
-mais organizado.
+mais organizado. No método listPaginateUsers() tive que usar Http::withoutVerifying() porque deu erro de conexão com o SSL
 
 11. Percebi que o retorno da API não vem paginado o que atrasou bastante o desenvolvimento deste teste já que o ideal é que
 a API traga listas já paginadas pelo Eloquent do Laravel e assim no front fica muito mais dinâmico mostrar a paginação.
@@ -116,6 +116,4 @@ app.blade.php
 
 13. O PDF diz pra somente deixar uma tabela dentro de um card paginando os usuários com botões de exclusão e edição mas eu decidi por liberdade adicionar javascript pra controlar modais de edição de exclusão e uma máscara pra o input de idade. Deixei os formulários preparados mas parei ai porque o PDF não pedia mais do que isso.
 
-14. Minhas considerações finais é que o arquivo de Sprint semanal ou de simples lista de funções a serem executadas como este PDF quanto mais detalhado for melhor mas sei que numa eventual contratação a empresa deverá ter um programador sênior que repassa todos os padrões de projeto e boas práticas executadas na mesma facilitando o trabalho do júnior. 
-
-
+14. Minhas considerações finais é que o arquivo de Sprint semanal ou de simples lista de funções a serem executadas como este PDF quanto mais detalhado for melhor mas sei que numa eventual contratação a empresa deverá ter um programador sênior que deve repassar todos os padrões de projeto e boas práticas executadas na mesma facilitando o trabalho do júnior.
